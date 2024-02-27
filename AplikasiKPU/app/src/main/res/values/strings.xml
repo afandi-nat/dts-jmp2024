@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Aplikasi KPU</string>
+    <string name="informasi">Informasi</string>
+    <string name="entry_data">Entry Data</string>
+    <string name="lihat_data">Lihat Data</string>
+    <string name="cek_lokasi">Cek Lokasi</string>
+    <string name="keluar">Keluar</string>
+</resources>
