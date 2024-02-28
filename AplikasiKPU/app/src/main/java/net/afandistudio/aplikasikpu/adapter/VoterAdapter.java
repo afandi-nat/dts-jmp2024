@@ -1,17 +1,21 @@
 package net.afandistudio.aplikasikpu.adapter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.afandistudio.aplikasikpu.DetailVoterActivity;
+import net.afandistudio.aplikasikpu.ListDataActivity;
 import net.afandistudio.aplikasikpu.R;
 import net.afandistudio.aplikasikpu.db.DbHelper;
 import net.afandistudio.aplikasikpu.model.Voter;
@@ -22,10 +26,11 @@ import java.util.ArrayList;
 public class VoterAdapter extends RecyclerView.Adapter<VoterAdapter.VoterViewHolder> {
     private ArrayList<Voter> listVoter = new ArrayList<>();
     private Activity activity;
+    DbHelper dbHelper;
 
     public VoterAdapter(Activity activity){
         this.activity = activity;
-        DbHelper dbHelper = new DbHelper(activity);
+        dbHelper = new DbHelper(activity);
     }
 
     public ArrayList<Voter> getListVoter(){
@@ -56,6 +61,25 @@ public class VoterAdapter extends RecyclerView.Adapter<VoterAdapter.VoterViewHol
             detailIntent.putExtra("voter", (Serializable) listVoter.get(position));
             activity.startActivity(detailIntent);
         });
+        holder.btnDelete.setOnClickListener((View v) -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+
+            builder.setTitle("Konfirmasi Hapus");
+            builder.setMessage("Apakah anda yakin menghapus ?");
+
+            builder.setPositiveButton("YA", (dialog, which) -> {
+                dbHelper.deleteUser(listVoter.get(position).getId());
+                Toast.makeText(activity, "Hapus Berhasil", Toast.LENGTH_SHORT).show();
+                Intent delIntent = new Intent(activity, ListDataActivity.class);
+                activity.startActivity(delIntent);
+                activity.finish();
+            });
+
+            builder.setNegativeButton("TIDAK", (dialog, which) -> dialog.dismiss());
+
+            AlertDialog alert = builder.create();
+            alert.show();
+        });
     }
 
     @Override
@@ -67,11 +91,13 @@ public class VoterAdapter extends RecyclerView.Adapter<VoterAdapter.VoterViewHol
 
         TextView tvNik, tvName;
         CardView cvItem;
+        Button btnDelete;
         public VoterViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNik = itemView.findViewById(R.id.tv_item_nik);
             tvName = itemView.findViewById(R.id.tv_item_nama);
             cvItem = itemView.findViewById(R.id.cv_item_voter);
+            btnDelete = itemView.findViewById(R.id.btn_delete);
         }
     }
 }

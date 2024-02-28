@@ -77,4 +77,9 @@ public class DbHelper extends SQLiteOpenHelper {
         }
         return userModel;
     }
+
+    public void deleteUser(int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLES_STD, KEY_ID + " = ?", new String[]{String.valueOf(id)});
+    }
 }
