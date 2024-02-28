@@ -14,11 +14,12 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import net.afandistudio.aplikasikpu.DetailVoterActivity;
-import net.afandistudio.aplikasikpu.ListDataActivity;
+import net.afandistudio.aplikasikpu.ui.DetailVoterActivity;
+import net.afandistudio.aplikasikpu.ui.ListDataActivity;
 import net.afandistudio.aplikasikpu.R;
 import net.afandistudio.aplikasikpu.db.DbHelper;
 import net.afandistudio.aplikasikpu.model.Voter;
+import net.afandistudio.aplikasikpu.ui.UpdateActivity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -61,6 +62,13 @@ public class VoterAdapter extends RecyclerView.Adapter<VoterAdapter.VoterViewHol
             detailIntent.putExtra("voter", (Serializable) listVoter.get(position));
             activity.startActivity(detailIntent);
         });
+
+        holder.btnUpdate.setOnClickListener((View v) -> {
+            Intent updateIntent = new Intent(activity, UpdateActivity.class);
+            updateIntent.putExtra("user", (Serializable) listVoter.get(position));
+            activity.startActivity(updateIntent);
+        });
+
         holder.btnDelete.setOnClickListener((View v) -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
@@ -88,16 +96,16 @@ public class VoterAdapter extends RecyclerView.Adapter<VoterAdapter.VoterViewHol
     }
 
     public class VoterViewHolder extends RecyclerView.ViewHolder {
-
         TextView tvNik, tvName;
         CardView cvItem;
-        Button btnDelete;
+        Button btnDelete, btnUpdate;
         public VoterViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNik = itemView.findViewById(R.id.tv_item_nik);
             tvName = itemView.findViewById(R.id.tv_item_nama);
             cvItem = itemView.findViewById(R.id.cv_item_voter);
             btnDelete = itemView.findViewById(R.id.btn_delete);
+            btnUpdate = itemView.findViewById(R.id.btn_update);
         }
     }
 }

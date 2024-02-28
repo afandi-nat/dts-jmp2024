@@ -7,14 +7,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".ui.EntryFormActivity">
+    tools:context=".ui.UpdateActivity">
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp">
+
         <EditText
-            android:id="@+id/edt_nik"
+            android:id="@+id/edt_update_nik"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Masukan NIK"
@@ -27,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp">
         <EditText
-            android:id="@+id/edt_name"
+            android:id="@+id/edt_update_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/masukan_nama"
@@ -40,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp">
         <EditText
-            android:id="@+id/edt_address"
+            android:id="@+id/edt_update_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Masukan Alamat"
@@ -53,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp">
         <EditText
-            android:id="@+id/edt_sex"
+            android:id="@+id/edt_update_sex"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Pria / Wanita"
@@ -62,9 +63,9 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btn_save"
+        android:id="@+id/btn_update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Simpan"/>
+        android:text="Update"/>
 
 </LinearLayout>
