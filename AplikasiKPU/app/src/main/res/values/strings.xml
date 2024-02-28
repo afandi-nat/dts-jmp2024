@@ -8,4 +8,20 @@
     <string name="nik">NIK</string>
     <string name="nama">Nama</string>
     <string name="masukan_nama">Masukan Nama</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="nama_pemilih">Nama Pemilih</string>
+    <string name="alamat">Alamat</string>
+    <string name="alamat_pemilih">Alamat Pemilih</string>
+    <string name="sex">Jenis Kelamin</string>
+    <string name="simpan">Simpan</string>
+    <string name="pria_wanita">Pria / Wanita</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="result">...</string>
+    <string name="cari">Cari</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="altitude">Altitude</string>
+    <string name="akurasi">Akurasi</string>
 </resources>
