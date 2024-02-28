@@ -13,11 +13,20 @@
         android:theme="@style/Theme.AplikasiKPU"
         tools:targetApi="31">
         <activity
+            android:name=".DetailVoterActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MyApp"
+            android:parentActivityName=".ListDataActivity"/>
+        <activity
             android:name=".ListDataActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.MyApp"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".EntryFormActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.MyApp"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">

@@ -70,8 +70,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 vote.setId(c.getInt(c.getColumnIndex(KEY_ID)));
                 vote.setNik(c.getString(c.getColumnIndex(KEY_NIK)));
                 vote.setName(c.getString(c.getColumnIndex(KEY_NAME)));
-                vote.setName(c.getString(c.getColumnIndex(KEY_ADDRESS)));
-                vote.setName(c.getString(c.getColumnIndex(KEY_SEX)));
+                vote.setAddress(c.getString(c.getColumnIndex(KEY_ADDRESS)));
+                vote.setSex(c.getString(c.getColumnIndex(KEY_SEX)));
                 userModel.add(vote);
             } while (c.moveToNext());
         }

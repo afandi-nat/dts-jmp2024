@@ -1,18 +1,22 @@
 package net.afandistudio.aplikasikpu.adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import net.afandistudio.aplikasikpu.DetailVoterActivity;
 import net.afandistudio.aplikasikpu.R;
 import net.afandistudio.aplikasikpu.db.DbHelper;
 import net.afandistudio.aplikasikpu.model.Voter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class VoterAdapter extends RecyclerView.Adapter<VoterAdapter.VoterViewHolder> {
@@ -29,7 +33,7 @@ public class VoterAdapter extends RecyclerView.Adapter<VoterAdapter.VoterViewHol
     }
 
     public void setListVoter(ArrayList<Voter> listVoter){
-        if (listVoter.size() > 5){
+        if (listVoter.size() > 0){
             this.listVoter.clear();
         }
         this.listVoter.addAll(listVoter);
@@ -47,6 +51,11 @@ public class VoterAdapter extends RecyclerView.Adapter<VoterAdapter.VoterViewHol
     public void onBindViewHolder(@NonNull VoterAdapter.VoterViewHolder holder, int position) {
         holder.tvNik.setText(listVoter.get(position).getNik());
         holder.tvName.setText(listVoter.get(position).getName());
+        holder.cvItem.setOnClickListener((View v) -> {
+            Intent detailIntent = new Intent(activity, DetailVoterActivity.class);
+            detailIntent.putExtra("voter", (Serializable) listVoter.get(position));
+            activity.startActivity(detailIntent);
+        });
     }
 
     @Override
@@ -57,10 +66,12 @@ public class VoterAdapter extends RecyclerView.Adapter<VoterAdapter.VoterViewHol
     public class VoterViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvNik, tvName;
+        CardView cvItem;
         public VoterViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNik = itemView.findViewById(R.id.tv_item_nik);
             tvName = itemView.findViewById(R.id.tv_item_nama);
+            cvItem = itemView.findViewById(R.id.cv_item_voter);
         }
     }
 }
