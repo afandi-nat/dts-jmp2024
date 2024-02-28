@@ -1,11 +1,18 @@
 package net.afandistudio.aplikasikpu.db;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import net.afandistudio.aplikasikpu.adapter.VoterAdapter;
+import net.afandistudio.aplikasikpu.model.Voter;
+
+import java.util.ArrayList;
 
 public class DbHelper extends SQLiteOpenHelper {
     public static String DATABASE_NAME = "db_kpu";
@@ -47,5 +54,27 @@ public class DbHelper extends SQLiteOpenHelper {
         values.put(KEY_SEX, sex);
 
         db.insert(TABLES_STD, null, values);
+    }
+
+    @SuppressLint("Range")
+    public ArrayList<Voter> getAllUser(){
+        ArrayList<Voter> userModel = new ArrayList<>();
+
+        String selectQuery = "SELECT * FROM " + TABLES_STD;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        if(c.moveToFirst()){
+            do{
+                Voter vote = new Voter();
+                vote.setId(c.getInt(c.getColumnIndex(KEY_ID)));
+                vote.setNik(c.getString(c.getColumnIndex(KEY_NIK)));
+                vote.setName(c.getString(c.getColumnIndex(KEY_NAME)));
+                vote.setName(c.getString(c.getColumnIndex(KEY_ADDRESS)));
+                vote.setName(c.getString(c.getColumnIndex(KEY_SEX)));
+                userModel.add(vote);
+            } while (c.moveToNext());
+        }
+        return userModel;
     }
 }

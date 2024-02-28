@@ -5,4 +5,6 @@
     <string name="lihat_data">Lihat Data</string>
     <string name="cek_lokasi">Cek Lokasi</string>
     <string name="keluar">Keluar</string>
+    <string name="nik">NIK</string>
+    <string name="nama">Nama</string>
 </resources>

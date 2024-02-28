@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Button btnEntry = findViewById(R.id.btn_entry);
         btnEntry.setOnClickListener(this);
+        Button btnList = findViewById(R.id.btn_lihat_data);
+        btnList.setOnClickListener(this);
     }
 
     @Override
@@ -23,6 +25,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(v.getId() == R.id.btn_entry){
             Intent entryIntent = new Intent(MainActivity.this, EntryFormActivity.class);
             startActivity(entryIntent);
+        }
+        if(v.getId() == R.id.btn_lihat_data){
+            Intent listIntent = new Intent(MainActivity.this, ListDataActivity.class);
+            startActivity(listIntent);
         }
     }
 }
